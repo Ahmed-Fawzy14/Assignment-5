@@ -130,25 +130,24 @@ void fillmaxHeaprray(vector<Node> &maxHeap)
     {
         while (getline(file, line))
         {
-            Node newNode; // Create a new Node instance
+            Node newNode;
             size_t i = 0;
 
-            // Extract date
+
             while (i < line.size() && line[i] != '\t') {
                 newNode.date.push_back(line[i]);
                 i++;
             }
             i++; // Skip the tab character
 
-            // Extract value
-            value = line.substr(i); // Grab the rest of the line
+
+            value = line.substr(i);
             newNode.valueString = value;
             newNode.value = stod(value);
 
-            // Debug print
             // cout << "Date: " << newNode.date << ", Value: " << newNode.value << endl;
 
-            maxHeap.push_back(newNode); // Add the new Node to the vector
+            maxHeap.push_back(newNode);
         }
     }
 }
@@ -180,17 +179,17 @@ void setExchangeRate(vector<Node> &maxHeap, double sum)
 
 //O(log(n)) where n is the number of elements in a heap
 void deleteElementMax(std::vector<Node>& heap) {
-    int n = heap.size() - 1; // Adjust for 0-based indexing
+    int n = heap.size() - 1;
     if (n <= 0) {
-        return; // Nothing to delete or invalid heap
+        return;
     }
 
-    // Swap the first element with the last
+
     swap(heap[0], heap[n]);
 
-    // Start from the root
-    int i = 0; // Root node at index 0
-    int j = 2 * i + 1; // Left child index
+
+    int i = 0;
+    int j = 2 * i + 1;
 
     // Heapify down
     while (j < n) {
@@ -199,52 +198,49 @@ void deleteElementMax(std::vector<Node>& heap) {
             j = j + 1;
         }
 
-        // If the parent is smaller than the larger child, swap them
         if (heap[i] < heap[j]) {
             swap(heap[i], heap[j]);
             i = j;
-            j = 2 * i + 1; // Move to the next level
+            j = 2 * i + 1;
         } else {
-            break; // Heap property satisfied
+            break;
         }
     }
 
-    // Remove the last element
+
     heap.pop_back();
 }
 
 //O(log(n)) where n is the number of elements in a heap
 void deleteElementMin(std::vector<Node>& heap) {
-    int n = heap.size() - 1; // Adjust for 0-based indexing
+    int n = heap.size() - 1;
     if (n <= 0) {
-        return; // Nothing to delete or invalid heap
+        return;
     }
 
-    // Swap the first element with the last
+
     swap(heap[0], heap[n]);
 
-    // Start from the root
-    int i = 0; // Root node at index 0
-    int j = 2 * i + 1; // Left child index
+    int i = 0;
+    int j = 2 * i + 1;
 
     // Heapify down
     while (j < n) {
-        // Check if right child exists and select the smaller child
+
         if (j + 1 < n && heap[j + 1] < heap[j]) {
             j = j + 1;
         }
 
-        // If the parent is larger than the smaller child, swap them
+
         if (heap[i] > heap[j]) {
             swap(heap[i], heap[j]);
             i = j;
-            j = 2 * i + 1; // Move to the next level
+            j = 2 * i + 1;
         } else {
-            break; // Heap property satisfied
+            break;
         }
     }
 
-    // Remove the last element
     heap.pop_back();
 }
 
