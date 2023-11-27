@@ -305,21 +305,23 @@ void maxSubArraySum(vector<Node> &heap)
 //x==1 O(N*log(m))
 //x==2 O(N*log(m))
 //x=3 O(n)
-void runProgramProblemOne(vector<Node> &maxHeap, vector<Node> &minHeap,vector<Node> &data)
+void runProgramProblem(vector<Node> &maxHeap, vector<Node> &minHeap,vector<Node> &data)
 {
     int x = 0;
     int n = 0;
+    char c;
     vector<Node> maxHeapN;
     vector<Node> minHeapN;
 
 
+
+
+do{
     cout<<"Choose the program you want to run:"<<endl;
     cout<<"1: Find the N highest exchange rates of the data set."<<endl;
     cout<<"2: Find the N lowest exchange rates of the data set."<<endl;
     cout<<"3: Find the dates and indicies of the maximum contigious sum."<<endl;
     cin>> x;
-
-
     if(x==1)
     {
         cout<<"Enter N: "<<endl;
@@ -345,6 +347,12 @@ void runProgramProblemOne(vector<Node> &maxHeap, vector<Node> &minHeap,vector<No
         maxSubArraySum(data);
 
     }
+
+    cout<<"Run again? (y/n)"<<endl;
+    cin>>c;
+}while(c != 'n');
+
+
 
 
 
@@ -372,7 +380,7 @@ int main(){
     HeapifyMax(maxHeap);
     HeapifyMin(minHeap);
 
-   runProgramProblemOne(maxHeap, minHeap, data);
+   runProgramProblem(maxHeap, minHeap, data);
 
 
 
